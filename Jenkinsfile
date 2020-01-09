@@ -10,8 +10,7 @@ pipeline {
     }
   stage('Test:Installation') {
       steps {
-        script { //sh './Pwett.sh'
-          echo 'Running Deployment Checking'
+        sh './Pwett.sh'
         }
       }
     }

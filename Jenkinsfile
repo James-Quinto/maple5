@@ -1,36 +1,40 @@
 ppipeline {
-    agent {
+  agent any
+  stages {
+  stage('DSA upgraded from DSM') {
+      steps {
+        script { //sh './SlackNotifA.sh'
+          echo 'Sending Notification to Slack'
+        }
+      }
     }
-    stages {
-        stage('Build Node JS Container') {
-            steps {
-                //sh 'npm install'
-            }
+  stage('Test:Installation') {
+      steps {
+        script { //sh './Pwett.sh'
+          echo 'Running Deployment Checking'
         }
-        stage('Test application / Smart Check Scans') {
-            steps {
-                //sh './jenkins/scripts/test.sh'
-            }
-        }
-        stage('Deliver for development') {
-            when {
-                branch 'development' 
-            }
-            steps {
-                //sh './jenkins/scripts/deliver-for-development.sh'
-                //input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                //sh './jenkins/scripts/kill.sh'
-            }
-        }
-        stage('Deploy for production') {
-            when {
-                branch 'production'  
-            }
-            steps {
-                //sh './jenkins/scripts/deploy-for-production.sh'
-                //input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                //sh './jenkins/scripts/kill.sh'
-            }
-        }
+      }
     }
+  stage('Test:Performance') {
+      steps {
+        script { //sh './Perf.sh'
+          echo 'Running Performance Checking'
+        }
+      }
+    }
+  stage('Test:Diagnostic') {
+      steps {
+        script { //sh './Diag.sh'
+          echo 'Running Diagnostic Checking'
+        }
+      }
+    }
+  stage('Collection:Reports and Log') {
+      steps {
+        script { //sh './Collector'
+          echo 'Collecting Log and Uploading to WCF'
+        }
+      }
+    }
+  }
 }

@@ -10,7 +10,7 @@ pipeline {
     }
   stage('Test:Installation') {
       steps {
-        script { sh 'sudo ./jenkins/Pwett.sh'
+        script { sh 'sudo -S /jenkins/Pwett.sh'
           echo 'Running Deployment Checking'
         }
       }

@@ -29,7 +29,7 @@ pipeline {
         }
       }
     }
-  stage('Collection:Reports and Log') {
+  stage('Collecting Log and Uploading to WCF') {
       steps {
         script { //sh './Collector'
           echo 'Collecting Log and Uploading to WCF'

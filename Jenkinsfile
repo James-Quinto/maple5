@@ -1,4 +1,4 @@
-pipeline {
+ppipeline {
   agent any
   stages {
   stage('DSA upgraded from DSM') {
@@ -10,7 +10,7 @@ pipeline {
     }
   stage('Test:Installation') {
       steps {
-        script { //sh './Pwett.sh'
+          sh './jenkins/Pwett.sh'
           echo 'Running Deployment Checking'
         }
       }

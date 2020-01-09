@@ -10,7 +10,7 @@ ppipeline {
     }
   stage('Test:Installation') {
       steps {
-        script { //sh './Pwett.sh'
+          sh './Pwett.sh'
           echo 'Running Deployment Checking'
         }
       }

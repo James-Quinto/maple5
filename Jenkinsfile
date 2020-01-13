@@ -1,37 +1,39 @@
 pipeline {
-    agent none
-    stages {
-        stage('Run Tests') {
-            parallel {
-                stage('Test On Windows') {
-                    agent {
-                        //label "windows"
-                    }
-                    steps {
-                        //bat "run-tests.bat"
-                    }
-                    post {
-                        //always {
-                            //junit "**/TEST-*.xml"
-                        }
-                    }
-                }
-                stage('Test On Linux') {
-                    agent {
-                        //label "linux"
-                    }
-                    steps {
-                        //sh "run-tests.sh"
-                    }
-                    post {
-                        //always {
-                            //junit "**/TEST-*.xml"
-                        }
-                    }
-                }
-            }
-        }
-    }
+	agent any
+	
+	stages {
+		stage("Build") {
+			steps {
+				sh 'mvn -v'
+			}
+		}
+		
+		stage("Testing") {
+			parallel {
+				stage("Unit Tests") {
+					agent { docker 'openjdk:7-jdk-alpine' }
+					steps {
+						sh 'java -version'
+					}
+				}
+				stage("Functional Tests") {
+					agent { docker 'openjdk:8-jdk-alpine' }
+					steps {
+						sh 'java -version'
+					}
+				}
+				stage("Integration Tests") {
+					steps {
+						sh 'java -version'
+					}
+				}
+			}
+		}
+		
+		stage("Deploy") {
+			steps {
+				echo "Deploy!"
+			}
+		}
+	}
 }
-          
-                        

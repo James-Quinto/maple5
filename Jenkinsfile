@@ -22,9 +22,9 @@ pipeline {
         }
       }
     }
-  stage('Test:Diagnostic') {
+  stage('Test:Network Engine') {
       steps {
-        script { //sh './Diag.sh'
+        script { //sh './Ratt_test.sh'
           echo 'Running Diagnostic Checking'
         }
       }

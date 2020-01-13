@@ -1,12 +1,31 @@
 pipeline {
-  agent any
+    agent none
     stages {
-        stage('DSA upgraded from DSM') {
+        stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
+                    agent {
+                        //label "windows"
+                    }
                     steps {
-                        script { //sh './SlackNotifA.sh'
-                        echo 'Sending Notification to Slack'
+                        //bat "run-tests.bat"
+                    }
+                    post {
+                        //always {
+                            //junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+                stage('Test On Linux') {
+                    agent {
+                        //label "linux"
+                    }
+                    steps {
+                        //sh "run-tests.sh"
+                    }
+                    post {
+                        //always {
+                            //junit "**/TEST-*.xml"
                         }
                     }
                 }

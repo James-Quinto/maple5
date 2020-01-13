@@ -68,6 +68,21 @@ pipeline {
 			}
 		}
 		
+		stage("Generating Reports") {
+			parallel {
+				stage("WCF Reports") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+				stage("Diagnosic Reports") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+			}
+		}
+		
 		stage("Notifying Slack") {
 			steps {
 				echo "Deploy!"

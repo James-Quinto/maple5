@@ -2,56 +2,56 @@ pipeline {
 	agent any
 	
 	stages {
-		stage("Build") {
+		stage("Platform Checkout") {
 			steps {
 				sh 'mvn -v'
 			}
 		}
 		
-		stage("Testing") {
+		stage("Agent Deployment Testing") {
 			parallel {
-				stage("Unit Tests") {
+				stage("Red Hat") {
 					agent { docker 'openjdk:7-jdk-alpine' }
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
-				stage("Functional Tests") {
+				stage("Ubuntu") {
 					agent { docker 'openjdk:8-jdk-alpine' }
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
-				stage("Integration Tests") {
+				stage("Windows) {
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
 			}
 		}
 		
-		stage("Testing") {
+		stage("Performance Testing") {
 			parallel {
-				stage("Unit Tests") {
+				stage("Red Hat") {
 					agent { docker 'openjdk:7-jdk-alpine' }
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
-				stage("Functional Tests") {
+				stage("Ubuntu") {
 					agent { docker 'openjdk:8-jdk-alpine' }
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
-				stage("Integration Tests") {
+				stage("Windows") {
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
 			}
 		}
-		stage("Deploy") {
+		stage("Notifying Slack") {
 			steps {
 				echo "Deploy!"
 			}

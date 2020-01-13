@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage("Build") {
 			steps {
-				//sh 'mvn -v'
+				sh 'uname -a'
 			}
 		}
 		

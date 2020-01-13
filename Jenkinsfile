@@ -8,7 +8,7 @@ pipeline {
 			}
 		}
 		
-		stage("Agent Deployment Testing") {
+		stage("Agent Deployment Test") {
 			parallel {
 				stage("Red Hat") {
 					steps {
@@ -28,7 +28,7 @@ pipeline {
 			}
 		}
 		
-		stage("Performance Testing") {
+		stage("Performance Test") {
 			parallel {
 				stage("Red Hat") {
 					steps {
@@ -47,6 +47,27 @@ pipeline {
 				}
 			}
 		}
+		
+		stage("Ratt-Tool Test") {
+			parallel {
+				stage("Red Hat") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+				stage("Ubuntu") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+				stage("Windows") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+			}
+		}
+		
 		stage("Notifying Slack") {
 			steps {
 				echo "Deploy!"

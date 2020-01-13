@@ -2,29 +2,45 @@ pipeline {
 	agent any
 	
 	stages {
-		stage("Build") {
+		stage("Connecting to Platforms") {
 			steps {
 				sh 'uname -a'
 			}
 		}
 		
-		stage("Testing") {
+		stage("Deployment Test") {
 			parallel {
-				stage("Unit Tests") {
-					agent { docker 'openjdk:7-jdk-alpine' }
+				stage("Linux / Rhel") {
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
-				stage("Functional Tests") {
-					agent { docker 'openjdk:8-jdk-alpine' }
+				stage("Linux / Debian") {
 					steps {
-						sh 'java -version'
+						sh 'uname -a'
 					}
 				}
-				stage("Integration Tests") {
+				stage("Windows Server") {
 					steps {
-						sh 'java -version'
+				sh 'uname -a'
+			}
+		}
+		
+		stage("Deployment Test") {
+			parallel {
+				stage("Linux / Rhel") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+				stage("Linux / Debian") {
+					steps {
+						sh 'uname -a'
+					}
+				}
+				stage("Windows Server") {
+					steps {
+						sh 'uname -a'
 					}
 				}
 			}

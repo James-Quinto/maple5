@@ -4,20 +4,18 @@ pipeline {
 	stages {
 		stage("Platform Checkout") {
 			steps {
-				sh 'mvn -v'
+				sh 'uname -a'
 			}
 		}
 		
 		stage("Agent Deployment Testing") {
 			parallel {
 				stage("Red Hat") {
-					agent { docker 'openjdk:7-jdk-alpine' }
 					steps {
 						sh 'uname -a'
 					}
 				}
 				stage("Ubuntu") {
-					agent { docker 'openjdk:8-jdk-alpine' }
 					steps {
 						sh 'uname -a'
 					}
@@ -33,13 +31,11 @@ pipeline {
 		stage("Performance Testing") {
 			parallel {
 				stage("Red Hat") {
-					agent { docker 'openjdk:7-jdk-alpine' }
 					steps {
 						sh 'uname -a'
 					}
 				}
 				stage("Ubuntu") {
-					agent { docker 'openjdk:8-jdk-alpine' }
 					steps {
 						sh 'uname -a'
 					}

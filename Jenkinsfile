@@ -22,7 +22,7 @@ pipeline {
 						sh 'uname -a'
 					}
 				}
-				stage("Windows) {
+				stage("Windows") {
 					steps {
 						sh 'uname -a'
 					}

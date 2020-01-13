@@ -26,7 +26,7 @@ pipeline {
 			}
 		}
 		
-		stage("Deployment Test") {
+		stage("Performance Test") {
 			parallel {
 				stage("Linux / Rhel") {
 					steps {
@@ -46,7 +46,7 @@ pipeline {
 			}
 		}
 		
-		stage("Deploy") {
+		stage("Generating WCF output and Reports") {
 			steps {
 				echo "Deploy!"
 			}

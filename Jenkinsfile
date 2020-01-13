@@ -2,31 +2,56 @@ pipeline {
 	agent any
 	
 	stages {
-		stage("Connecting to Platforms") {
+		stage("Build") {
 			steps {
-				sh 'uname -a'
+				sh 'mvn -v'
 			}
 		}
 		
-		stage("Deployment Test") {
+		stage("Testing") {
 			parallel {
-				stage("Linux / Rhel") {
+				stage("Unit Tests") {
+					agent { docker 'openjdk:7-jdk-alpine' }
 					steps {
-						sh 'uname -a'
+						sh 'java -version'
 					}
 				}
-				stage("Linux / Debian") {
+				stage("Functional Tests") {
+					agent { docker 'openjdk:8-jdk-alpine' }
 					steps {
-						sh 'uname -a'
+						sh 'java -version'
 					}
 				}
-				stage("Windows Server") {
+				stage("Integration Tests") {
 					steps {
-				sh 'uname -a'
+						sh 'java -version'
+					}
+				}
 			}
 		}
 		
-		stage("Generating WCF output and Reports") {
+		stage("Testing") {
+			parallel {
+				stage("Unit Tests") {
+					agent { docker 'openjdk:7-jdk-alpine' }
+					steps {
+						sh 'java -version'
+					}
+				}
+				stage("Functional Tests") {
+					agent { docker 'openjdk:8-jdk-alpine' }
+					steps {
+						sh 'java -version'
+					}
+				}
+				stage("Integration Tests") {
+					steps {
+						sh 'java -version'
+					}
+				}
+			}
+		}
+		stage("Deploy") {
 			steps {
 				echo "Deploy!"
 			}

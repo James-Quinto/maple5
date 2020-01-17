@@ -10,12 +10,12 @@ pipeline {
 		
 		stage("Agent Deployment Test") {
 			parallel {
-				stage("Docker CE/K8") {
+				stage("Oracle RAC") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Docker EE") {
+				stage("SQL Cluster") {
 					steps {
 						sh 'uname -a'
 					}
@@ -26,12 +26,12 @@ pipeline {
 		
 		stage("Performance Test") {
 			parallel {
-				stage("Docker CE/K8") {
+				stage("Oracle RAC") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Docker EE") {
+				stage("SQL Cluster") {
 					steps {
 						sh 'uname -a'
 					}
@@ -42,12 +42,12 @@ pipeline {
 		
 		stage("Ratt-Tool Test") {
 			parallel {
-				stage("Docker CE/K8") {
+				stage("Oracle RAC") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Docker EE") {
+				stage("SQL Cluster") {
 					steps {
 						sh 'uname -a'
 					}
@@ -73,7 +73,7 @@ pipeline {
 		
 		stage("Notifying Slack") {
 			steps {
-				echo "Deploy!"
+				echo "Build Finished!"
 			}
 		}
 	}

@@ -10,61 +10,49 @@ pipeline {
 		
 		stage("Agent Deployment Test") {
 			parallel {
-				stage("Apache") {
+				stage("Docker CE/K8") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("IIS") {
+				stage("Docker EE") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Oracle AS") {
-					steps {
-						sh 'uname -a'
-					}
-				}
+
 			}
 		}
 		
 		stage("Performance Test") {
 			parallel {
-				stage("Apache") {
+				stage("Docker CE/K8") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("IIS") {
+				stage("Docker EE") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Oracle AS") {
-					steps {
-						sh 'uname -a'
-					}
-				}
+
 			}
 		}
 		
 		stage("Ratt-Tool Test") {
 			parallel {
-				stage("Apache") {
+				stage("Docker CE/K8") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("IIS") {
+				stage("Docker EE") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Oracle AS") {
-					steps {
-						sh 'uname -a'
-					}
-				}
+
 			}
 		}
 		

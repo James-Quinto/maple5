@@ -10,17 +10,17 @@ pipeline {
 		
 		stage("Agent Deployment Test") {
 			parallel {
-				stage("Red Hat") {
+				stage("Apache") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Ubuntu") {
+				stage("IIS") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Windows") {
+				stage("Oracle AS") {
 					steps {
 						sh 'uname -a'
 					}
@@ -30,17 +30,17 @@ pipeline {
 		
 		stage("Performance Test") {
 			parallel {
-				stage("Red Hat") {
+				stage("Apache") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Ubuntu") {
+				stage("IIS") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Windows") {
+				stage("Oracle AS") {
 					steps {
 						sh 'uname -a'
 					}
@@ -50,17 +50,17 @@ pipeline {
 		
 		stage("Ratt-Tool Test") {
 			parallel {
-				stage("Red Hat") {
+				stage("Apache") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Ubuntu") {
+				stage("IIS") {
 					steps {
 						sh 'uname -a'
 					}
 				}
-				stage("Windows") {
+				stage("Oracle AS") {
 					steps {
 						sh 'uname -a'
 					}
@@ -75,7 +75,7 @@ pipeline {
 						sh 'uname -a'
 					}
 				}
-				stage("Diagnosic Reports") {
+				stage("Diagnostic Reports") {
 					steps {
 						sh 'uname -a'
 					}
